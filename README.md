@@ -68,3 +68,11 @@ they won't match once I boot in the installed system.
    brew install chezmoi &&
      chezmoi init git@github.com:dmarcoux/dotfiles-fedora.git
    ```
+
+7. Setup and use [RPM Fusion](https://rpmfusion.org/RPM%20Fusion) for softwares not available in Fedora's official repositories
+
+   1. [Verify RPM Fusion's signing keys](https://rpmfusion.org/keys).
+
+   2. [Install RPM Fusion's free and non-free repositories](https://rpmfusion.org/Configuration).
+
+   3. [Install codecs](https://rpmfusion.org/Howto/Multimedia).
