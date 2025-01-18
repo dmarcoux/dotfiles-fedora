@@ -69,7 +69,13 @@ they won't match once I boot in the installed system.
      chezmoi init git@github.com:dmarcoux/dotfiles-fedora.git
    ```
 
-7. Setup and use [RPM Fusion](https://rpmfusion.org/RPM%20Fusion) for softwares not available in Fedora's official repositories
+7. Install CLI applications from Brewfile.
+
+   ```bash
+   brew bundle --file $(dirname "$(chezmoi source-path)")/Brewfile
+   ```
+
+8. Setup and use [RPM Fusion](https://rpmfusion.org/RPM%20Fusion) for softwares not available in Fedora's official repositories
 
    1. [Verify RPM Fusion's signing keys](https://rpmfusion.org/keys).
 
@@ -77,4 +83,4 @@ they won't match once I boot in the installed system.
 
    3. [Install codecs](https://rpmfusion.org/Howto/Multimedia).
 
-8. Install [Mullvad VPN](https://mullvad.net/en/download/vpn/linux).
+9. Install [Mullvad VPN](https://mullvad.net/en/download/vpn/linux).
