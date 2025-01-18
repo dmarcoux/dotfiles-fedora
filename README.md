@@ -76,3 +76,5 @@ they won't match once I boot in the installed system.
    2. [Install RPM Fusion's free and non-free repositories](https://rpmfusion.org/Configuration).
 
    3. [Install codecs](https://rpmfusion.org/Howto/Multimedia).
+
+8. Install [Mullvad VPN](https://mullvad.net/en/download/vpn/linux).
