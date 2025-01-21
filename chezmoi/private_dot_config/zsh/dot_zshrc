@@ -375,6 +375,8 @@ export RIPGREP_CONFIG_PATH="/home/dany/.config/ripgrep/config"
 
 export EDITOR="nvim"
 
+alias vi='nvim'
+alias vim='nvim'
 alias vimdiff='nvim -d'
 
 ##### X.Org Server #####
