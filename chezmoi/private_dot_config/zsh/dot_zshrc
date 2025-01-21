@@ -483,6 +483,11 @@ case "$TERM" in
     precmd() { print -Pn '\e]2;zsh: %n@%~\a' } ;;
 esac
 
+##### Homebrew ####
+
+# Run `brew bundle` with the Brewfile from my dotfiles
+ealias bb='brew bundle --file $(dirname "$(chezmoi source-path)")/Brewfile'
+
 ##### fzf #####
 
 # Set up fzf keybindings and fuzzy completion
