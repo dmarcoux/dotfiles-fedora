@@ -1,5 +1,3 @@
-# TODO: Check if all programs.zsh.initExtra code from my NixOS + home-manager dotfiles has been migrated to this zsh config.
-
 typeset -U path cdpath fpath manpath
 
 # TODO: Do I need this now that zsh isn't installed with home-manager?
