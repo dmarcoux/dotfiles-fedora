@@ -1,0 +1,26 @@
+# TODO: What was the point of this again? I don't remember...
+# [character]
+# error_symbol = "\\$"
+# success_symbol = "\\$"
+
+[directory]
+format = "$path "
+truncate_to_repo = false
+truncation_length = 10
+
+# TODO: I don't think that I want to keep this... let's see
+# [git_branch]
+# format = " [$branch]($style) "
+# style = "fg:green"
+
+# TODO: I don't think that I want to keep this... let's see
+# [nix_shell]
+# format = "| [nix-shell]($style) "
+
+# TODO: I don't think that I want to keep this... let's see
+# [python]
+# format = "(| [🐍 $virtualenv]($style) )"
+
+[username]
+format = "$user@"
+show_always = true
