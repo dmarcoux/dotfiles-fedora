@@ -4,6 +4,7 @@ brew "chezmoi" # https://www.chezmoi.io/
 brew "devcontainer" # https://containers.dev/
 brew "direnv" # https://direnv.net/
 brew "fd" # https://github.com/sharkdp/fd
+brew "fzf" # https://github.com/junegunn/fzf
 brew "gh" # https://cli.github.com/
 brew "git-delta" # https://github.com/dandavison/delta
 brew "git-lfs" # https://git-lfs.com/

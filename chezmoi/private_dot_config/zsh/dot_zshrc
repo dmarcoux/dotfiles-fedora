@@ -386,24 +386,24 @@ alias vimdiff='nvim -d'
 
 ##### XDG #####
 
-# TODO: Uncomment this once I've set the XDG dirs
-# export XDG_AUDIO_DIR="/home/dany/audio"
-# export XDG_CACHE_HOME="/home/dany/.cache"
+export XDG_AUDIO_DIR="/home/dany/audio"
+export XDG_CACHE_HOME="/home/dany/.cache"
+# TODO: Do I need this? This was from my NixOS dotfiles. Check in output from `printenv` to see my desktop environment sets for this by default. This line below can probably be removed.
 # export XDG_CONFIG_DIRS="/nix/store/pf2jrnl96hqmz99dk2ndvj1dyjafprf1-stylix-kde-config${XDG_CONFIG_DIRS:+:$XDG_CONFIG_DIRS}"
-# export XDG_CONFIG_HOME="/home/dany/.config"
-# export XDG_DATA_HOME="/home/dany/.local/share"
-# export XDG_DESKTOP_DIR="/home/dany/desktop"
-# export XDG_DOCUMENTS_DIR="/home/dany/documents"
-# export XDG_DOWNLOAD_DIR="/home/dany/downloads"
-# export XDG_EBOOKS_DIR="/home/dany/ebooks"
-# export XDG_MUSIC_DIR="/home/dany/music"
-# export XDG_PICTURES_DIR="/home/dany/pictures"
-# export XDG_PROJETS_DIR="/home/dany/projets"
-# export XDG_PUBLICSHARE_DIR="/home/dany/public"
-# export XDG_STATE_HOME="/home/dany/.local/state"
-# export XDG_TEMPLATES_DIR="/home/dany/templates"
-# export XDG_TEMPORARY_DIR="/home/dany/tmp"
-# export XDG_VIDEOS_DIR="/home/dany/videos"
+export XDG_CONFIG_HOME="/home/dany/.config"
+export XDG_DATA_HOME="/home/dany/.local/share"
+export XDG_DESKTOP_DIR="/home/dany/desktop"
+export XDG_DOCUMENTS_DIR="/home/dany/documents"
+export XDG_DOWNLOAD_DIR="/home/dany/downloads"
+export XDG_EBOOKS_DIR="/home/dany/ebooks"
+export XDG_MUSIC_DIR="/home/dany/music"
+export XDG_PICTURES_DIR="/home/dany/pictures"
+export XDG_PROJETS_DIR="/home/dany/projets"
+export XDG_PUBLICSHARE_DIR="/home/dany/public"
+export XDG_STATE_HOME="/home/dany/.local/state"
+export XDG_TEMPLATES_DIR="/home/dany/templates"
+export XDG_TEMPORARY_DIR="/home/dany/tmp"
+export XDG_VIDEOS_DIR="/home/dany/videos"
 
 ##### Docker / Podman / Devcontainer #####
 
@@ -473,24 +473,25 @@ esac
 
 ##### fzf #####
 
-# TODO: Uncomment when using fzf
-# function cd_to_lf_g_mappings_and_project_directories() {
-#   local directory
-#   # Take the lf g mappings (except `g,`), format them before adding all directories under $XDG_PROJETS_DIR to the list of directories to be processed by fzf
-#   directory=$(cat ${config.xdg.configHome}/lf/lfrc | { sed -n -e 's|\s*map g[^,]* cd "\?\(.*\)"\?|\1|gp'; \ls --directory ${config.xdg.userDirs.extraConfig.XDG_PROJETS_DIR}/* } | sort | uniq | fzf)
-#
-#   cd "$directory" || echo "$directory doesn't exist."
-#
-#   zle && zle accept-line
-# }
+# Set up fzf keybindings and fuzzy completion
+source <(fzf --zsh)
 
-# TODO: Uncomment when using fzf
+function cd_to_lf_g_mappings_and_project_directories() {
+  local directory
+  # Take the lf g mappings (except `g,`), format them before adding all directories under $XDG_PROJETS_DIR to the list of directories to be processed by fzf
+  directory=$(cat "$XDG_CONFIG_HOME/lf/lfrc" | { sed -n -e 's|\s*map g[^,]* cd "\?\(.*\)"\?|\1|gp'; \ls --directory "$XDG_PROJETS_DIR/*" } | sort | uniq | fzf)
+
+  cd "$directory" || echo "$directory doesn't exist."
+
+  zle && zle accept-line
+}
+
 # Define keybind CTRL+G to call the function
-# zle -N cd_to_lf_g_mappings_and_project_directories
-# bindkey '^g' cd_to_lf_g_mappings_and_project_directories
+zle -N cd_to_lf_g_mappings_and_project_directories
+bindkey '^g' cd_to_lf_g_mappings_and_project_directories
 
 # TODO: To configure fzf, maybe use this instead: https://github.com/junegunn/fzf/pull/3618. See also https://github.com/junegunn/fzf/discussions/2528
-# export FZF_ALT_C_COMMAND="command fd --hidden --type directory --exclude .git"
-# export FZF_CTRL_T_COMMAND="command fd --hidden --type file --exclude .git"
-# export FZF_DEFAULT_COMMAND="command fd --hidden --type file --exclude .git"
-# export FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all --bind 'ctrl-f:reload(command fd --hidden --type file --exclude .git --no-ignore-vcs),ctrl-g:reload(command fd --hidden --type file --exclude .git)' --min-height=100 --reverse --color fg:#848484,bg:#ffffff,hl:#186daa:bold,fg+:#ffffff,bg+:#557301,hl+:#186daa:bold --color info:#876500,prompt:#876500,pointer:#ffffff,marker:#ffffff,spinner:#876500 --no-separator --color bg:#ffffff,bg+:#ededed,fg:#636363,fg+:#555555,header:#186daa,hl:#186daa,hl+:#186daa,info:#876500,marker:#087767,pointer:#087767,prompt:#876500,spinner:#087767"
+export FZF_ALT_C_COMMAND="command fd --hidden --type directory --exclude .git"
+export FZF_CTRL_T_COMMAND="command fd --hidden --type file --exclude .git"
+export FZF_DEFAULT_COMMAND="command fd --hidden --type file --exclude .git"
+export FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all --bind 'ctrl-f:reload(command fd --hidden --type file --exclude .git --no-ignore-vcs),ctrl-g:reload(command fd --hidden --type file --exclude .git)' --min-height=100 --reverse --color fg:#848484,bg:#ffffff,hl:#186daa:bold,fg+:#ffffff,bg+:#557301,hl+:#186daa:bold --color info:#876500,prompt:#876500,pointer:#ffffff,marker:#ffffff,spinner:#876500 --no-separator --color bg:#ffffff,bg+:#ededed,fg:#636363,fg+:#555555,header:#186daa,hl:#186daa,hl+:#186daa,info:#876500,marker:#087767,pointer:#087767,prompt:#876500,spinner:#087767"
