@@ -471,6 +471,11 @@ if [[ $TERM != "dumb" ]]; then
   eval "$(starship init zsh)"
 fi
 
+##### 1Password #####
+
+# Use the 1Password SSH agent for all hosts
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
 ##### Alacritty #####
 
 case "$TERM" in
