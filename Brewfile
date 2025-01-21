@@ -3,6 +3,7 @@ brew "bat" # https://github.com/sharkdp/bat
 brew "chezmoi" # https://www.chezmoi.io/
 brew "devcontainer" # https://containers.dev/
 brew "direnv" # https://direnv.net/
+brew "eza" # https://eza.rocks/
 brew "fd" # https://github.com/sharkdp/fd
 brew "fzf" # https://github.com/junegunn/fzf
 brew "gh" # https://cli.github.com/
