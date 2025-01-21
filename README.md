@@ -1,4 +1,4 @@
-# Dotfiles for Fedora 41 KDE
+# Dotfiles for Fedora 41
 
 ## Live ISO / Installation
 
@@ -14,27 +14,34 @@ they won't match once I boot in the installed system.
    hostnamectl hostname <NAME>
    ```
 
-2. Setup 1Password.
+2. Setup 1Password GUI/CLI and Chromium
 
    1. Install 1Password GUI and CLI.
 
-      _The 1Password Yum repository is automatically configured via the RPM
-      file. It also installs the GUI. The CLI is then available to be installed
-      from that repository._
+      _1Password instructions taken from its [official website](https://support.1password.com/install-linux/)._
 
       ```bash
-      sudo rpm --install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm &&
-        sudo dnf install 1password-cli
+      sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc &&
+        sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'a &&
+        sudo dnf install 1password 1password-cli
       ```
 
-   2. Add 1Password to autostart in KDE. Do not forget to add `--silent` to the
-      arguments to start the GUI in the system tray.
+   2. Install Chromium.
 
-   3. Enable [1Password SSH agent](https://developer.1password.com/docs/ssh/get-started/#step-3-turn-on-the-1password-ssh-agent).
+      ```bash
+      sudo dnf install chromium
+      ```
 
-   4. [Sign Git commits with my SSH key](https://developer.1password.com/docs/ssh/git-commit-signing/).
+   3. Add 1Password to autostart. Do not forget to add `--silent` to the
+      arguments (just before `%U`) to start the GUI in the system tray.
 
-   5. Configure the GUI to match the settings stored in my 1Password notes.
+   4. Add Chromium to autostart.
+
+   5. Enable [1Password SSH agent](https://developer.1password.com/docs/ssh/get-started/#step-3-turn-on-the-1password-ssh-agent).
+
+   6. [Sign Git commits with my SSH key](https://developer.1password.com/docs/ssh/git-commit-signing/).
+
+   7. Configure the 1Password GUI to match the settings stored in my 1Password notes.
 
 3. Open Firefox and connect to Firefox Sync. This restores my extensions and
    settings. The linkding and 1Password extensions must be configured. See my 1Password notes
@@ -75,12 +82,10 @@ they won't match once I boot in the installed system.
    brew bundle --file $(dirname "$(chezmoi source-path)")/Brewfile
    ```
 
-8. Setup and use [RPM Fusion](https://rpmfusion.org/RPM%20Fusion) for softwares not available in Fedora's official repositories
+8. Install Anytype.
 
-   1. [Verify RPM Fusion's signing keys](https://rpmfusion.org/keys).
-
-   2. [Install RPM Fusion's free and non-free repositories](https://rpmfusion.org/Configuration).
-
-   3. [Install codecs](https://rpmfusion.org/Howto/Multimedia).
+   ```bash
+   flatpak install io.anytype.anytype
+   ```
 
 9. Install [Mullvad VPN](https://mullvad.net/en/download/vpn/linux).
