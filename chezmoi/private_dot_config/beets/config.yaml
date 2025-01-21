@@ -1,0 +1,30 @@
+directory: /home/dany/music
+fetchart:
+  cautious: true
+  cover_names: cover front art album folder
+  sources:
+  - filesystem
+  - coverart: release releasegroup
+  - itunes
+import:
+  copy: true
+  hardlink: false
+  link: false
+  move: false
+  reflink: false
+  resume: ask
+  write: true
+paths:
+  comp: $format/Compilations/$album%aunique{}/$track $title
+  default: $format/$albumartist/$album%aunique{}/$track $title
+  singleton: $format/Non-Album/$artist/$title
+plugins:
+- fetchart
+- info
+- lastgenre
+- missing
+- replaygain
+replaygain:
+  backend: ffmpeg
+  # TODO: I don't think this is needed anymore since the migration to NixOS. It was previously a Nix store path.
+  # command: ffmpeg
