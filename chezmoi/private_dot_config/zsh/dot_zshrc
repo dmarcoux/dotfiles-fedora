@@ -482,6 +482,12 @@ case "$TERM" in
     precmd() { print -Pn '\e]2;zsh: %n@%~\a' } ;;
 esac
 
+##### mise #####
+
+if [[ $TERM != "dumb" ]]; then
+  eval "$(mise activate zsh)"
+fi
+
 ##### Homebrew ####
 
 # Run `brew bundle` with the Brewfile from my dotfiles
