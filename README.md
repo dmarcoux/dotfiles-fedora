@@ -8,6 +8,13 @@ they won't match once I boot in the installed system.
 
 ## Setup After Installation
 
+*chezmoi* automates the setup after the OS installation. To understand how this
+works, it's important to understand *chezmoi*'s
+[reference](https://www.chezmoi.io/reference/) with its source state attributes,
+and application order. Those define when each configuration/script is
+applied/executed. For example, the execution order of scripts is based on their
+source state attributes, then their name.
+
 1. Set hostname, and log out before logging back in for this to take effect.
 
    ```bash
@@ -76,16 +83,10 @@ they won't match once I boot in the installed system.
      chezmoi init git@github.com:dmarcoux/dotfiles-fedora.git
    ```
 
-7. Install CLI applications from Brewfile.
-
-   ```bash
-   brew bundle --file $(dirname "$(chezmoi source-path)")/Brewfile
-   ```
-
-8. Install Anytype.
+7. Install Anytype.
 
    ```bash
    flatpak install io.anytype.anytype
    ```
 
-9. Install [Mullvad VPN](https://mullvad.net/en/download/vpn/linux).
+8. Install [Mullvad VPN](https://mullvad.net/en/download/vpn/linux).
