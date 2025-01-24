@@ -6,6 +6,15 @@ typeset -U path cdpath fpath manpath
 # Use emacs keymap as the default.
 bindkey -e
 
+##### Homebrew ####
+
+# Setup homebrew.
+# This is done as one of the first steps in zsh's config to ensure CLIs installed via homebrew are available later when needed.
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Run `brew bundle` with the Brewfile from my dotfiles
+ealias bb='brew bundle --file $(dirname "$(chezmoi source-path)")/Brewfile'
+
 ##### Completion #####
 
 autoload -U compinit && compinit
@@ -487,11 +496,6 @@ esac
 if [[ $TERM != "dumb" ]]; then
   eval "$(mise activate zsh)"
 fi
-
-##### Homebrew ####
-
-# Run `brew bundle` with the Brewfile from my dotfiles
-ealias bb='brew bundle --file $(dirname "$(chezmoi source-path)")/Brewfile'
 
 ##### jq #####
 
