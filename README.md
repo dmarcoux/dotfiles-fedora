@@ -65,16 +65,11 @@ source state attributes, then their name.
       sudo dnf install chromium
       ```
 
-   3. Add 1Password to autostart. Do not forget to add `--silent` to the
-      arguments (just before `%U`) to start the GUI in the system tray.
+   3. Enable [1Password SSH agent](https://developer.1password.com/docs/ssh/get-started/#step-3-turn-on-the-1password-ssh-agent).
 
-   4. Add Chromium to autostart.
+   4. [Sign Git commits with my SSH key](https://developer.1password.com/docs/ssh/git-commit-signing/).
 
-   5. Enable [1Password SSH agent](https://developer.1password.com/docs/ssh/get-started/#step-3-turn-on-the-1password-ssh-agent).
-
-   6. [Sign Git commits with my SSH key](https://developer.1password.com/docs/ssh/git-commit-signing/).
-
-   7. Configure the 1Password GUI to match the settings stored in my 1Password notes.
+   5. Configure the 1Password GUI to match the settings stored in my 1Password notes.
 
 6. Setup [homebrew](https://brew.sh/) for CLI applications not available in Fedora's official repositories.
 
